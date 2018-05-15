@@ -1,0 +1,23 @@
+{
+  "name": "blog-theocib",
+  "version": "1.0.0",
+  "description": "Create a blog with a single page listing articles and a form to post a new one.\r An article should have at least the `title` and `content` properties.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NodeCourse/blog-TheoCib.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NodeCourse/blog-TheoCib/issues"
+  },
+  "homepage": "https://github.com/NodeCourse/blog-TheoCib#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "pug": "^2.0.3"
+  }
+}
