@@ -11,6 +11,8 @@ Post
 
 });
 
+//app.use(bodyParser.urlencoded({extended: true})); parser le body a partir du form (telecharcher npm install body-parser --save
+
 const db = new Sequelize('userTest', 'root', '', {
     host: 'localhost',
     dialect: 'mysql'
