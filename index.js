@@ -4,9 +4,12 @@ const app = express();
 app.set('view engine', 'pug');
 app.use(express.static("public"));
 
-/*app.get('/',(request, response) => {
-    response.render("home");
-});*/
+app.get('/',(request, response) => {
+Post
+    .findAll({include: [Vote]})
+    .then(posts => response.render("home", {posts}));
+
+});
 
 const db = new Sequelize('userTest', 'root', '', {
     host: 'localhost',
@@ -38,5 +41,38 @@ User
     .then((users) => {
         console.log(users);
     });
+
+const Post = db.define('post', {
+    title:{
+        type: Sequelize.STRING
+    }
+});
+
+Post
+    .sync()
+    .then(()=> {
+        Post.create({
+            title: "Petit post sympathique"
+        })
+
+});
+
+const Vote = db.define('vote', {
+    action: {
+        type: Sequelize.ENUM('up','down')
+    }
+});
+
+Post.hasMany(Vote);
+Vote.belongsTo(Post);
+
+Vote.sync();
+
+
+app.post('/api/post/:postId/upvote', (req,res) =>{
+    Vote
+        .create({action: 'up', postId: req.params.postId})
+        .then (() => res.redirect('/'))
+});
 
 app.listen(3000);
