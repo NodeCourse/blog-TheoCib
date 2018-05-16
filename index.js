@@ -57,7 +57,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/', (req,res) => {
-   res.render('home')
+   res.render('home', { user: req.user })
 });
 
 app.get('/adduser', (req,res) => {
@@ -83,7 +83,7 @@ app.post('/adduser', (req,res) => {
 });
 
 app.get('/login', (req,res) => {
-    res.render('login')
+    res.render('login', { user: req.user })
 });
 
 app.post('/login', passport.authenticate('local', {

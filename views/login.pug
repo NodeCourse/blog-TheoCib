@@ -1,6 +1,8 @@
 header
     title login
-body
+if user
+    h1 Welcome #{user.firstname} #{user.lastname}
+else
     form(method="POST")
         input(type="text", name="username", placeholder="Login")
         input(type="password", name="password", placeholder="Password")
